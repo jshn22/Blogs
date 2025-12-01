@@ -1,0 +1,208 @@
+.blog-page {
+  min-height: 100vh;
+  background-color: var(--bg-light);
+}
+
+.blog-header {
+  background: white;
+  color: #2d3436;
+  padding: 5rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px dashed #a29bfe;
+}
+
+.blog-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(162, 155, 254, 0.05) 10px,
+      rgba(162, 155, 254, 0.05) 20px
+    );
+}
+
+.blog-header .container {
+  position: relative;
+  z-index: 1;
+}
+
+.blog-header .container::before {
+  content: '✍️';
+  position: absolute;
+  font-size: 5rem;
+  top: -60px;
+  left: 5%;
+  opacity: 0.4;
+  animation: float 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.blog-header .container::after {
+  content: '📚';
+  position: absolute;
+  font-size: 5rem;
+  top: -50px;
+  right: 5%;
+  opacity: 0.4;
+  animation: float 4s ease-in-out infinite reverse;
+  pointer-events: none;
+}
+
+.blog-header-title {
+  position: relative;
+}
+
+.blog-header-title::after {
+  content: '🎨';
+  position: absolute;
+  font-size: 4rem;
+  bottom: 100%;
+  right: -80px;
+  opacity: 0.35;
+  animation: float 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.blog-header-subtitle {
+  position: relative;
+}
+
+.blog-header-subtitle::before {
+  content: '💭';
+  position: absolute;
+  font-size: 4rem;
+  bottom: 100%;
+  left: -100px;
+  opacity: 0.35;
+  animation: float 3.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.blog-header-subtitle::after {
+  content: '✨';
+  position: absolute;
+  font-size: 4rem;
+  top: 100%;
+  right: -100px;
+  opacity: 0.4;
+  animation: float 4.5s ease-in-out infinite reverse;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+.blog-header-title {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  margin-bottom: var(--spacing-md);
+  color: #2d3436;
+  position: relative;
+  z-index: 1;
+  font-weight: 800;
+  display: inline-block;
+  padding: 0.5rem 2rem;
+  background: linear-gradient(120deg, #a29bfe 0%, #6c5ce7 100%);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(108, 92, 231, 0.3);
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease;
+}
+
+.blog-header-title:hover {
+  transform: rotate(0deg) scale(1.05);
+}
+
+.blog-header-title::before {
+  content: '📝';
+  margin-right: 1rem;
+}
+
+.blog-header-subtitle {
+  font-size: 1.3rem;
+  color: #636e72;
+  max-width: 700px;
+  margin: 1.5rem auto 0;
+  position: relative;
+  z-index: 1;
+  font-weight: 500;
+  background: #fff;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+}
+
+.blog-filters {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: var(--spacing-xl) 0;
+}
+
+.filter-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: white;
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: var(--font-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.filter-btn:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background-color: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--spacing-xl);
+  padding-bottom: var(--spacing-xxl);
+}
+
+.no-results {
+  text-align: center;
+  padding: var(--spacing-xxl) var(--spacing-md);
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .blog-filters {
+    padding: var(--spacing-lg) 0;
+  }
+
+  .filter-btn {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9375rem;
+  }
+}
